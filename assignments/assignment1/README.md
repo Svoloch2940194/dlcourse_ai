@@ -15,3 +15,13 @@
 Линейный классификатор (Linear classifier)
 
 `Linear classifier.ipynb` - следуйте инструкциям в ноутбуке.
+
+
+num_test = dists.shape[0]
+        pred = np.zeros(num_test, np.bool)
+        for i in range(num_test):
+            # nearest training samples
+            nearest_indices = np.argsort(dists[i])[:self.k]
+            nearest_labels = self.train_y[nearest_indices]
+            pred[i] = np.argmax(np.bincount(nearest_labels))
+        return pred
